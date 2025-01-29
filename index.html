@@ -1,177 +1,190 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brek Store - Melayani Gimana Mood</title>
+    <title>Book Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f4f4f4;
+            --bg-color: #ffffff;
+            --text-color: #333;
+        }
+
+        .dark-mode {
+            --primary-color: #f4f4f4;
+            --secondary-color: #333;
+            --bg-color: #1a1a1a;
+            --text-color: #f4f4f4;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        :root {
-            --pastel-pink: #FFB3BA;
-            --pastel-blue: #B3E5FF;
-            --pastel-green: #B3FFC3;
-            --pastel-peach: #FFDEB3;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--pastel-pink);
-            padding: 1.5rem;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            background-color: var(--pastel-blue);
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 5%;
+            background-color: var(--secondary-color);
         }
 
-        section {
-            padding: 4rem 0;
-            min-height: 80vh;
-        }
-
-        h2 {
-            color: var(--pastel-green);
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-
-        .tagline {
-            color: #666;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-
-        /* Halaman Store */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        .nav-links {
+            display: flex;
             gap: 2rem;
         }
 
-        .product-card {
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
-        /* Halaman Contact */
-        .contact-form {
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+        }
+
+        .book-card {
+            background: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .contact-section {
+            padding: 2rem 5%;
             max-width: 600px;
             margin: 0 auto;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 0.5rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        button {
-            background-color: var(--pastel-peach);
+        button[type="submit"] {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        button:hover {
-            background-color: var(--pastel-blue);
-        }
-
-        footer {
-            background-color: var(--pastel-pink);
-            text-align: center;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             padding: 2rem;
-            margin-top: 4rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Brek Store</h1>
-        <p class="tagline">Melayani Gimana Mood</p>
-        <nav>
+    <nav>
+        <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#store">Store</a>
+            <a href="#books">Books</a>
             <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
 
-    <div class="container">
-        <section id="home">
-            <h2>Selamat Datang di Brek Store</h2>
-            <p>Temukan berbagai produk berkualitas yang sesuai dengan mood-mu!</p>
-            <div class="product-grid">
-                <!-- Tambahkan konten produk disini -->
-            </div>
-        </section>
+    <section class="hero" id="home">
+        <h1>Book Portfolio</h1>
+        <p>Penulis dan Penerbit Buku Profesional</p>
+    </section>
 
-        <section id="about">
-            <h2>Tentang Kami</h2>
-            <p>Brek Store hadir untuk memberikan pengalaman berbelanja yang menyenangkan dan sesuai dengan mood Anda.</p>
-            <!-- Tambahkan konten about disini -->
-        </section>
+    <section class="books-grid" id="books">
+        <div class="book-card">
+            <img src="https://via.placeholder.com/300x400" alt="Book Cover">
+            <h3>Judul Buku 1</h3>
+            <p>Deskripsi singkat buku pertama</p>
+            <small>Terbit: Januari 2023</small>
+        </div>
+        <!-- Tambahkan lebih banyak book-card sesuai kebutuhan -->
+    </section>
 
-        <section id="store">
-            <h2>Toko Kami</h2>
-            <div class="product-grid">
-                <!-- Tambahkan daftar produk disini -->
-            </div>
-        </section>
+    <section class="contact-section" id="contact">
+        <h2>Hubungi Saya</h2>
+        <form action="#" method="POST">
+            <input type="text" name="name" placeholder="Nama" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Pesan" rows="5" required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </section>
 
-        <section id="contact">
-            <h2>Hubungi Kami</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Nama">
-                <input type="email" placeholder="Email">
-                <textarea rows="5" placeholder="Pesan"></textarea>
-                <button type="submit">Kirim Pesan</button>
-            </form>
-        </section>
+    <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
     </div>
 
-    <footer>
-        <p>© 2023 Brek Store - Melayani Gimana Mood</p>
-    </footer>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+    </script>
 </body>
 </html>
